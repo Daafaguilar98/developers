@@ -1,5 +1,6 @@
 <template>
   <div class="developers">
+    <developer :data="developerContent" v-on:hidden="toggleDeveloper" v-show="showDeveloper"></developer>
     <console v-on:hidden="toggleConsole" v-show="showConsole" v-bind:database="database" 
     														  v-bind:storage="storage"></console>
     <h1>Desarrolladores Villavicencio</h1>
@@ -9,7 +10,7 @@
         <p class="bold">createUser()</p>
     </div>
     <div class="developers_items">
-	    <div class="developer" v-for="user in users">
+	    <div class="developer" v-for="user in users" v-on:click="updateData(user)">
 	    	<div class="developer_image">
 	    		<div class="img">
 	    			<img :src="user.photoURL">
@@ -26,6 +27,7 @@
 
 <script>
 import console from './console.vue'
+import developer from './developer.vue'
 
 import Vue from 'vue'
 import Firebase from 'firebase'
@@ -46,21 +48,46 @@ let storage = Firebase.storage();
 Vue.use(VueFire)
 
 export default {
-  components: { console },
+  components: { console, developer },
   name: 'developers',
   data () {
     return {
       showConsole: false,
       database: db,
       storage,
+      showDeveloper: false,
+      developerContent: {},
     }
   },
   firebase: {
-  	users: db.ref('/users')
+  	usersOriginal: db.ref('/users')
+  },
+  computed: {
+    users() {
+      let usersOriginal = this.usersOriginal;
+      let size = usersOriginal.length;
+      let newOrderUsers = [];
+      for (var i = 0; i < size; i++) {
+        let positionRandom = Math.round(Math.random());
+        if(positionRandom == 1){
+          newOrderUsers.push(usersOriginal[i]);
+        }else{
+          newOrderUsers.unshift(usersOriginal[i]);
+        }
+      }
+      return newOrderUsers
+    }
   },
   methods: {
     toggleConsole(){
       this.showConsole = !this.showConsole;
+    },
+    toggleDeveloper(){
+      this.showDeveloper = !this.showDeveloper;
+    },
+    updateData(data){
+      this.developerContent = data;
+      this.toggleDeveloper();
     }
   }
 }
@@ -104,6 +131,7 @@ export default {
   	border-radius: 12px;
   	display: flex;
   	margin-bottom: 10px;
+    cursor: pointer;
   }
   .developer_image{
   	width: 80px;

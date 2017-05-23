@@ -58,24 +58,26 @@ export default {
 					methodExist = false;
 				}
 			}else{
+				console.log(this.indexLabel)
 				if(this.labelInput == "upload photo(y/n):"){
 					if(this.comand == "y" || this.comand == "Y" || this.comand == "YES" || this.comand == "yes" || this.comand == "si" || this.comand == "SI" || this.comand == "Yes"){
 						this.uploadPhoto();
 					}else if(this.comand == "n" || this.comand == "N" || this.comand == "NO" || this.comand == "no" || this.comand == "No"){
 						this.photoURL = 'http://www.planetcalypsoforum.com/gallery/files/2/0/0/6/3/sin_city_avatar.jpg'
 						this.indexLabel++;
-				  		this.labels();
+						this.labels();
 					}else{
 						this.labelInput = "";
 					}
-				}
-				this.comands.push(`${this.labelInput} ${this.comand}`)
-				let labelInput = this.labelInput.replace(":", "")
-				this.user[labelInput] = this.comand
-				if(this.labelInput != "upload photo(y/n):"){
-					this.indexLabel++;
-					this.labelInput = "";
-					this.labels();
+				}else{
+					this.comands.push(`${this.labelInput} ${this.comand}`)
+					let labelInput = this.labelInput.replace(":", "")
+					this.user[labelInput] = this.comand
+					if(this.labelInput != "upload photo(y/n):"){
+						this.indexLabel++;
+						this.labelInput = "";
+						this.labels();
+					}
 				}
 			}
 			this.comand = "";
@@ -145,6 +147,7 @@ export default {
 		        email: this.user.email,
 		        job: this.user.job,
 		        stack: this.user.stack,
+		        company: this.user.company,
 		        photoURL: this.photoURL,
 		    })
 		    this.comands.push('User saved successfully')
@@ -164,7 +167,7 @@ export default {
 	.console_screen{
 		width: 100%;
 		height: 100vh;
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		display: flex;

@@ -26,6 +26,9 @@ export default {
 		font-size: 25px;
 		color: #211934;
 	}
+	.text{
+		font-size: 14px;
+	}
 	.detail{
 		font-size: 13px;
 		color: gray;
