@@ -4,7 +4,7 @@
 		<div id="console" class="console">
 			<div class="console_textInitial text">
 				<i class="material-icons">navigate_next</i>
-				<p><span class="green">https://github.com/Daafaguilar98/developers.git</span>, if you need help use help()</p>
+				<p><a href="https://github.com/Daafaguilar98/developers.git" class="green">https://github.com/Daafaguilar98/developers.git</a>, if you need help use help()</p>
 			</div>
 			<div class="text" v-for="comand in comands">
 				<i class="material-icons">navigate_next</i>
@@ -61,6 +61,10 @@ export default {
 				if(this.labelInput == "upload photo(y/n):"){
 					if(this.comand == "y" || this.comand == "Y" || this.comand == "YES" || this.comand == "yes" || this.comand == "si" || this.comand == "SI" || this.comand == "Yes"){
 						this.uploadPhoto();
+					}else if(this.comand == "n" || this.comand == "N" || this.comand == "NO" || this.comand == "no" || this.comand == "No"){
+						this.photoURL = 'http://www.planetcalypsoforum.com/gallery/files/2/0/0/6/3/sin_city_avatar.jpg'
+						this.indexLabel++;
+				  		this.labels();
 					}else{
 						this.labelInput = "";
 					}
@@ -70,6 +74,7 @@ export default {
 				this.user[labelInput] = this.comand
 				if(this.labelInput != "upload photo(y/n):"){
 					this.indexLabel++;
+					this.labelInput = "";
 					this.labels();
 				}
 			}
