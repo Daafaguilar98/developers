@@ -2,6 +2,11 @@
 
 > Es un directorio de desarrolladores para villavicencio
 
+
+## Libre para colaboracion de la comunidad
+apoyado por villadevs
+
+
 ## Build Setup
 
 ``` bash

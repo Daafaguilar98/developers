@@ -73,6 +73,9 @@ export default {
     flex-direction: column;
     align-items: center;
   }
+  .developers > h1, .developers > p{
+    text-align: center;
+  }
   h1{
     margin-top: 50px;
     color: #211934;
