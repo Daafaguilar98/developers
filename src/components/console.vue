@@ -4,7 +4,7 @@
 		<div id="console" class="console">
 			<div class="console_textInitial text">
 				<i class="material-icons">navigate_next</i>
-				<p><a href="https://github.com/Daafaguilar98/developers.git" class="green">https://github.com/Daafaguilar98/developers.git</a>, if you need help use help()</p>
+				<p><a target="_blanck" href="https://github.com/Daafaguilar98/developers.git" class="green">https://github.com/Daafaguilar98/developers.git</a>, if you need help use help()</p>
 			</div>
 			<div class="text" v-for="comand in comands">
 				<i class="material-icons">navigate_next</i>

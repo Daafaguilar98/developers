@@ -4,7 +4,7 @@
     <console v-on:hidden="toggleConsole" v-show="showConsole" v-bind:database="database" 
     														  v-bind:storage="storage"></console>
     <h1>Desarrolladores Villavicencio</h1>
-    <p class="subtitle light italic">Aqui estamos los mejores, acaso tu no estas aqui?</p>
+    <p class="subtitle light italic">{[(Si se puede <strong>imaginar</strong>, se puede <strong>programar</strong>)]}</p>
     <div v-on:click="toggleConsole" class="actionConsole">
         <img src="../assets/console.png">
         <p class="bold">createUser()</p>
